@@ -35,18 +35,22 @@ export type User = {
 
 export const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState(false);
 
   const getUser = async () => {
     const get = getFactory();
 
-    const user = await get({}, '/users/kazuaki21');
-
-    console.log(user);
+    try {
+      const user = await get({}, '/users/kazuaki21');
+      setUser(user);
+    } catch (error) {
+      setError(true);
+    }
   };
 
   useEffect(() => {
     getUser();
   }, []);
 
-  return {user};
+  return {user, error};
 };

@@ -4,10 +4,6 @@ import axios, {AxiosRequestConfig} from 'axios';
 
 const DEFAULT_API_CONFIG: AxiosRequestConfig = {
   baseURL: 'https://api.github.com',
-  headers: {
-    Accept: 'Accept: application/vnd.github.v3+json',
-    'Content-Type': 'application/json',
-  },
 };
 
 export const getFactory = (option?: AxiosRequestConfig) => {

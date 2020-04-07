@@ -1,7 +1,9 @@
 import React, {FC} from 'react';
 
+import Router from './views/router';
+
 const App: FC = () => {
-  return <h1>Welcome!! kazuaki21 github page</h1>;
+  return <Router />;
 };
 
 export default App;

@@ -1,11 +1,13 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { FC } from 'react';
+import { PageProps, Link } from 'gatsby';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from '../components/common/layout';
+import Image from '../components/image';
+import SEO from '../components/common/layout/seo';
 
-const IndexPage = () => (
+type Props = PageProps<{}>;
+
+const IndexPage: FC<Props> = () => (
   <Layout>
     <SEO title="Home" />
     <h1>Hi people</h1>
@@ -17,6 +19,6 @@ const IndexPage = () => (
     <Link to="/page-2/">Go to page 2</Link> <br />
     <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;

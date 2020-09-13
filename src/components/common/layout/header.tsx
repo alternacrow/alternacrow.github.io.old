@@ -1,8 +1,11 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React, { FC } from 'react';
+import { Link } from 'gatsby';
 
-const Header = ({ siteTitle }) => (
+type Props = {
+  title?: string;
+};
+
+const Header: FC<Props> = ({ title = '' }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -24,19 +27,11 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          {title}
         </Link>
       </h1>
     </div>
   </header>
-)
+);
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+export default Header;

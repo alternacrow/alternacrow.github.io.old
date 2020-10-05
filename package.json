@@ -1,8 +1,9 @@
 {
   "name": "alternacrow.github.io",
   "private": true,
-  "description": "https://alternacrow.github.io",
-  "version": "0.1.0",
+  "description": "alternacrow's portfolio site",
+  "version": "1.0.0",
+  "author": "Kazuaki Horita",
   "scripts": {
     "build": "npm run clean && gatsby build",
     "develop": "gatsby develop",
@@ -59,5 +60,9 @@
     "stylelint-prettier": "^1.1.2",
     "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^4.0.2"
+  },
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/alternacrow/alternacrow.github.io"
   }
 }

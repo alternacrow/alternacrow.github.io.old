@@ -1,16 +1,29 @@
 import React, { FC } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
 
 import './destyle.css';
 import './index.css';
 
+import { Header } from './header';
+import { Footer } from './footer';
+
+import { LayoutQuery } from '../../types/graphql-types';
+
 const Layout: FC = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+  const data: LayoutQuery = useStaticQuery(graphql`
+    query Layout {
+      allGithubData {
+        nodes {
+          data {
+            user {
+              login
+              bio
+              avatarUrl
+              email
+              twitterUsername
+              url
+            }
+          }
         }
       }
     }
@@ -18,27 +31,11 @@ const Layout: FC = ({ children }) => {
 
   return (
     <>
-      <Header>
-        {/**
-         *
-         */}
-      </Header>
+      <Header user={data.allGithubData.nodes[0].data?.user} />
       <main>{children}</main>
-      <Footer>
-        <p>© 2020 alternacrow</p>
-      </Footer>
+      <Footer />
     </>
   );
 };
 
 export default Layout;
-
-const Header = styled.header`
-  border-bottom: 1px solid #eeeeee;
-`;
-
-const Footer = styled.header`
-  text-align: center;
-  font-size: 14px;
-  color: #cccccc;
-`;

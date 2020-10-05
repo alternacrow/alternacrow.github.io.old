@@ -1,37 +1,79 @@
-module.exports = {
-  siteMetadata: {
-    title: `alternacrow`,
-    description: `alternacrow`,
-    author: `@alternacrow`,
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+require('dotenv').config();
+const path = require('path');
+
+const siteMetadata = {
+  title: 'alternacrow',
+  author: 'alternacrow',
+  shortName: 'alternacrow',
+  siteLanguage: 'ja',
+  user: {
+    name: 'alternacrow',
+    github: 'alternacrow',
+    twitter: 'alternacrow',
   },
+};
+
+module.exports = {
+  siteMetadata,
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: siteMetadata.title,
+        short_name: siteMetadata.shortName,
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        display: 'minimal-ui',
+        icon: 'src/assets/images/favicon.png',
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: path.join(__dirname, `src`, `assets`, `images`),
       },
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    'gatsby-plugin-offline',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-source-github-api`,
       options: {
-        name: `alternacrow portfolio`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        token: process.env.GITHUB_API_TOKEN,
+        graphQLQuery: `
+        query {
+          repositories: search(type: REPOSITORY, first: 10, query: "user:${siteMetadata.user.github} is:public") {
+            nodes {
+              ... on Repository {
+                id
+                name
+                description
+                url
+              }
+            }
+          }
+          user(login: "${siteMetadata.user.github}") {
+            login
+            bio
+            avatarUrl(size: 32)
+            email
+            twitterUsername
+            url
+          }
+        } `,
       },
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-typescript`,
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
-        fileName: `types/graphql-types.d.ts`,
+        fileName: `src/types/graphql-types.d.ts`,
+        codegenConfig: { maybeValue: 'T | undefined' },
       },
     },
     `gatsby-plugin-styled-components`,

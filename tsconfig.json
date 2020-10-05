@@ -17,6 +17,7 @@
     "moduleResolution": "node",
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": ["node_modules/@types"]
   }
 }

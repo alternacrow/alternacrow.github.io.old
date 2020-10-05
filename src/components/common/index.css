@@ -13,3 +13,8 @@
     'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック',
     'MS PGothic', sans-serif;
 }
+
+body {
+  max-width: 960px;
+  margin: 0 auto;
+}

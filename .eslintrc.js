@@ -27,11 +27,10 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.ts', '.tsx', '.json'],
+        extensions: ['.d.ts', '.ts', '.tsx', '.json'],
       },
     },
   },
-
   plugins: [
     'react',
     'react-hooks',
@@ -89,5 +88,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-param-reassign': ['error', { props: false }],
     'no-shadow': 'off',
+    'no-underscore-dangle': 'off',
+    camelcase: 'off',
   },
 };

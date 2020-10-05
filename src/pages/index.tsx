@@ -1,27 +1,53 @@
 import React, { FC } from 'react';
-import { PageProps } from 'gatsby';
+import { PageProps, useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
+import { media } from '../assets/styles/media';
 
 import Layout from '../components/common/layout';
-import Image from '../components/image';
 import SEO from '../components/common/seo';
+import { Github } from '../components/github';
 
-type Props = PageProps;
+import { IndexQuery } from '../types/graphql-types';
 
-const IndexPage: FC<Props> = () => {
+const IndexPage: FC<PageProps> = () => {
+  const data: IndexQuery = useStaticQuery(graphql`
+    query Index {
+      allGithubData {
+        nodes {
+          data {
+            repositories {
+              nodes {
+                id
+                name
+                description
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <Layout>
       <SEO title="Home" />
-
-      <Title>alternacrow</Title>
-
-      <p>this is alternacrow homepage</p>
+      <Container>
+        <Github
+          repositories={
+            data.allGithubData.nodes[0].data?.repositories?.nodes ?? []
+          }
+        />
+      </Container>
     </Layout>
   );
 };
 
 export default IndexPage;
 
-const Title = styled.p`
-  font-size: 20px;
+const Container = styled.div`
+  padding: 32px 16px;
+  ${media.sp} {
+    padding: 24px 8px;
+  }
 `;

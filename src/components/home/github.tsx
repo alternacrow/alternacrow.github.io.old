@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { media } from '../assets/styles/media';
-import { colors } from '../assets/styles/colors';
+import { media } from '../../assets/styles/media';
+import { color } from '../../assets/styles/colors';
 
-import { GithubDataDataRepositories } from '../types/graphql-types';
+import { GithubDataDataRepositories } from '../../types/graphql-types';
 
 type Props = {
   repositories?: GithubDataDataRepositories['nodes'];
@@ -47,13 +47,13 @@ const Repositories = styled.dl`
 `;
 
 const Card = styled.div`
-  border-bottom: 1px solid ${colors.border};
+  border-bottom: 1px solid ${color.border};
   padding: 10px 4px;
 `;
 
 const Name = styled.dt`
   font-size: 16px;
-  color: ${colors.primary};
+  color: ${color.primary};
   &:hover {
     opacity: 0.8;
   }

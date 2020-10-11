@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import './destyle.css';
-import './index.css';
+import '../../assets/styles/destyle.css';
+import '../../assets/styles/index.css';
 
 import { Header } from './header';
 import { Footer } from './footer';
@@ -13,15 +13,17 @@ const Layout: FC = ({ children }) => {
   const data: LayoutQuery = useStaticQuery(graphql`
     query Layout {
       allGithubData {
-        nodes {
-          data {
-            user {
-              login
-              bio
-              avatarUrl
-              email
-              twitterUsername
-              url
+        edges {
+          node {
+            data {
+              user {
+                login
+                bio
+                avatarUrl
+                email
+                twitterUsername
+                url
+              }
             }
           }
         }
@@ -31,7 +33,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <>
-      <Header user={data.allGithubData.nodes[0].data?.user} />
+      <Header user={data.allGithubData.edges[0].node.data?.user} />
       <main>{children}</main>
       <Footer />
     </>

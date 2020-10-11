@@ -1743,8 +1743,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1871,8 +1869,6 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -2080,8 +2076,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___user___name'
   | 'siteMetadata___user___github'
   | 'siteMetadata___user___twitter'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2174,8 +2168,6 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2808,7 +2800,7 @@ export type StringQueryOperatorInput = {
 export type LayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LayoutQuery = { allGithubData: { nodes: Array<{ data?: Maybe<{ user?: Maybe<Pick<GithubDataDataUser, 'login' | 'bio' | 'avatarUrl' | 'email' | 'twitterUsername' | 'url'>> }> }> } };
+export type LayoutQuery = { allGithubData: { edges: Array<{ node: { data?: Maybe<{ user?: Maybe<Pick<GithubDataDataUser, 'login' | 'bio' | 'avatarUrl' | 'email' | 'twitterUsername' | 'url'>> }> } }> } };
 
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2818,7 +2810,7 @@ export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type IndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexQuery = { allGithubData: { nodes: Array<{ data?: Maybe<{ repositories?: Maybe<{ nodes?: Maybe<Array<Maybe<Pick<GithubDataDataRepositoriesNodes, 'id' | 'name' | 'description' | 'url'>>>> }> }> }> } };
+export type IndexQuery = { allGithubData: { edges: Array<{ node: { data?: Maybe<{ repositories?: Maybe<{ nodes?: Maybe<Array<Maybe<Pick<GithubDataDataRepositoriesNodes, 'id' | 'name' | 'description' | 'url'>>>> }> }> } }> } };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

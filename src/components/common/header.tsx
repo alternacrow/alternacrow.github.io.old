@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { media } from '../../assets/styles/media';
-import { colors } from '../../assets/styles/colors';
+import { color } from '../../assets/styles/colors';
 
 import { FontAwesome } from './atoms/images/fontawesome';
 
@@ -23,15 +23,15 @@ export const Header: FC<Props> = ({ user = {} }) => {
         </Link>
       </Left>
       <Right>
-        <SNSIcon href={user?.url}>
-          <FontAwesome type="github" size={24} />
-        </SNSIcon>
-        <SNSIcon href={`https://twitter.com/${user?.twitterUsername}`}>
-          <FontAwesome type="twitter" size={24} />
-        </SNSIcon>
-        <SNSIcon href={`mailto:${user?.email}`}>
-          <FontAwesome type="envelope-o" size={20} />
-        </SNSIcon>
+        <SNSLink href={user?.url}>
+          <GithubIcon />
+        </SNSLink>
+        <SNSLink href={`https://twitter.com/${user?.twitterUsername}`}>
+          <TwitterIcon />
+        </SNSLink>
+        <SNSLink href={`mailto:${user?.email}`}>
+          <EmailIcon />
+        </SNSLink>
       </Right>
     </Container>
   );
@@ -62,13 +62,13 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   ${media.sp} {
-    margin-top: 16px;
+    margin-top: 20px;
   }
 `;
 
 const Title = styled.span`
   font-size: 18px;
-  color: ${colors.black};
+  color: ${color.black};
   ${media.sp} {
     margin-left: 1.5em;
   }
@@ -77,24 +77,42 @@ const Title = styled.span`
 const Bio = styled.p`
   margin-top: 5px;
   font-size: 14px;
-  color: ${colors.black};
+  color: ${color.black};
 `;
 
 const Avater = styled.img`
   margin-left: 4px;
 `;
 
-const SNSIcon = styled.a.attrs({
+const SNSLink = styled.a.attrs({
   rel: 'noopener noreferrer',
   target: '_blank',
 })`
   margin-left: 12px;
-  color: ${colors.black};
+  color: ${color.black};
   &:first-child {
     margin-left: 0;
   }
   &:hover {
-    color: ${colors.primary};
+    color: ${color.primary};
     transition: color 0.15s ease-in-out;
   }
+`;
+
+const GithubIcon = styled(FontAwesome).attrs({
+  type: 'github',
+})`
+  font-size: 24px;
+`;
+
+const TwitterIcon = styled(FontAwesome).attrs({
+  type: 'twitter',
+})`
+  font-size: 24px;
+`;
+
+const EmailIcon = styled(FontAwesome).attrs({
+  type: 'envelope-o',
+})`
+  font-size: 20px;
 `;

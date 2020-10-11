@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - release
   schedule:
     - cron: '0 15 * * *'
 
@@ -24,13 +24,13 @@ jobs:
       - name: build
         run: npm run build
         env:
-          GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
+          GITHUB_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2.3.2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
+          PUBLISH_BRANCH: main
           PUBLISH_DIR: ./public
 
   audit:

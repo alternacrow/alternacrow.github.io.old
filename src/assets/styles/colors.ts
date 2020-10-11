@@ -6,7 +6,7 @@ type ColorType =
   | 'gray'
   | 'border';
 
-export const colors: { [key in ColorType]: string } = {
+export const color: { [key in ColorType]: string } = {
   primary: '#2C2CFF',
   secondary: '#43a047',
   white: '#ffffff',

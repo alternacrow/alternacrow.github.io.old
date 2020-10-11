@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { PageProps, useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
-import { media } from '../assets/styles/media';
+import { media } from '../assets/styles';
 
 import Layout from '../components/common/layout';
 import SEO from '../components/common/seo';
-import { Github } from '../components/github';
+import { Github } from '../components/home/github';
 
 import { IndexQuery } from '../types/graphql-types';
 
@@ -13,14 +13,16 @@ const IndexPage: FC<PageProps> = () => {
   const data: IndexQuery = useStaticQuery(graphql`
     query Index {
       allGithubData {
-        nodes {
-          data {
-            repositories {
-              nodes {
-                id
-                name
-                description
-                url
+        edges {
+          node {
+            data {
+              repositories {
+                nodes {
+                  id
+                  name
+                  description
+                  url
+                }
               }
             }
           }
@@ -35,7 +37,7 @@ const IndexPage: FC<PageProps> = () => {
       <Container>
         <Github
           repositories={
-            data.allGithubData.nodes[0].data?.repositories?.nodes ?? []
+            data.allGithubData.edges[0].node.data?.repositories?.nodes ?? []
           }
         />
       </Container>

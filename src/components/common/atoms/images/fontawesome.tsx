@@ -1,20 +1,12 @@
-import React, { FC, CSSProperties } from 'react';
-import styled from 'styled-components';
+import React, { FC } from 'react';
 
 type Type = 'github' | 'twitter' | 'envelope-o';
 
 type Props = {
   type: Type;
-  size?: number;
-  style?: CSSProperties;
+  className?: string;
 };
 
-export const FontAwesome: FC<Props> = ({ type, size = 32, style = {} }) => {
-  return (
-    <Icon style={style} className={`fa fa-${type}`} size={size} type={type} />
-  );
+export const FontAwesome: FC<Props> = ({ type, className }) => {
+  return <i className={`fa fa-${type} ${className}`} />;
 };
-
-const Icon = styled.i<{ size: number; type: Type }>`
-  font-size: ${({ size }) => size}px;
-`;

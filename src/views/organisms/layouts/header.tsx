@@ -1,57 +1,55 @@
 import React, { FC } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { media } from '../../assets/styles/media';
-import { color } from '../../assets/styles/colors';
+import { media, vw, color } from '../../../assets/styles';
 
-import { FontAwesome } from './atoms/images/fontawesome';
+import { FontAwesome } from '../../atoms/icons/fontawesome';
 
-import { GithubDataDataUser } from '../../types/graphql-types';
+import { GithubDataDataUser } from '../../../types/graphql-types';
 
 type Props = {
   user?: GithubDataDataUser;
 };
 
-export const Header: FC<Props> = ({ user = {} }) => {
-  return (
-    <Container>
-      <Left>
-        <Link to="/">
-          <Title>{user.login}</Title>
-          <Avater src={user?.avatarUrl} alt={user?.login} />
-          <Bio>{user?.bio}</Bio>
-        </Link>
-      </Left>
-      <Right>
-        <SNSLink href={user?.url}>
-          <GithubIcon />
-        </SNSLink>
-        <SNSLink href={`https://twitter.com/${user?.twitterUsername}`}>
-          <TwitterIcon />
-        </SNSLink>
-        <SNSLink href={`mailto:${user?.email}`}>
-          <EmailIcon />
-        </SNSLink>
-      </Right>
-    </Container>
-  );
-};
+export const Header: FC<Props> = ({ user = {} }) => (
+  <Container>
+    <Left>
+      <Link to="/">
+        <Title>{user.login}</Title>
+        <Avater src={user?.avatarUrl} alt={user?.login} />
+        <Bio>{user?.bio}</Bio>
+      </Link>
+    </Left>
+    <Right>
+      <SNSLink href={user?.url}>
+        <GithubIcon />
+      </SNSLink>
+      <SNSLink href={`https://twitter.com/${user?.twitterUsername}`}>
+        <TwitterIcon />
+      </SNSLink>
+      <SNSLink href={`mailto:${user?.email}`}>
+        <EmailIcon />
+      </SNSLink>
+    </Right>
+  </Container>
+);
 
 const Container = styled.header`
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 48px;
+  padding: 0 16px;
+
   ${media.sp} {
     height: auto;
-    padding: 16px 48px;
+    padding: ${vw(16)} ${vw(8)};
     flex-direction: column;
     justify-content: center;
   }
 `;
 
-const Left = styled.div`
+const Left = styled.h1`
   align-items: center;
   ${media.sp} {
     text-align: center;
@@ -112,7 +110,7 @@ const TwitterIcon = styled(FontAwesome).attrs({
 `;
 
 const EmailIcon = styled(FontAwesome).attrs({
-  type: 'envelope-o',
+  type: 'email',
 })`
   font-size: 20px;
 `;

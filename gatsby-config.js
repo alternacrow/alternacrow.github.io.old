@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: siteMetadata.title,
         short_name: siteMetadata.shortName,
@@ -32,17 +32,17 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: path.join(__dirname, `src`, `assets`, `images`),
+        name: 'images',
+        path: path.join(__dirname, 'src', 'assets', 'images'),
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-offline',
     {
-      resolve: `gatsby-source-github-api`,
+      resolve: 'gatsby-source-github-api',
       options: {
         token: process.env.GITHUB_API_TOKEN,
         graphQLQuery: `
@@ -54,6 +54,7 @@ module.exports = {
                 name
                 description
                 url
+                homepageUrl
               }
             }
           }
@@ -64,18 +65,30 @@ module.exports = {
             email
             twitterUsername
             url
+            gists(first: 10, privacy: PUBLIC) {
+              edges {
+                node {
+                  id
+                  url
+                  updatedAt
+                  createdAt
+                  description
+                  name
+                }
+              }
+            }
           }
         } `,
       },
     },
-    `gatsby-plugin-typescript`,
+    'gatsby-plugin-typescript',
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
-        fileName: `src/types/graphql-types.d.ts`,
+        fileName: 'src/types/graphql-types.d.ts',
         codegenConfig: { maybeValue: 'T | undefined' },
       },
     },
-    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-styled-components',
   ],
 };

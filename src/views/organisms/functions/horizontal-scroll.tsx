@@ -10,15 +10,13 @@ type Props<T> = {
 };
 type Component = <T>(props: Props<T>) => ReactElement<Props<T>>;
 
-export const HorizontalScroll: Component = ({ data, renderItem }) => {
-  return (
-    <Ul>
-      {data.map((item, i) => (
-        <Li key={item.key}>{renderItem(item, i)}</Li>
-      ))}
-    </Ul>
-  );
-};
+export const HorizontalScroll: Component = ({ data, renderItem }) => (
+  <Ul>
+    {data.map((item, i) => (
+      <Li key={item.key}>{renderItem(item, i)}</Li>
+    ))}
+  </Ul>
+);
 
 const Ul = styled.ul`
   box-sizing: border-box;

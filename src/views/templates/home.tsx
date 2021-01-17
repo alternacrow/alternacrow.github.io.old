@@ -4,8 +4,8 @@ import { media, vw, color } from '../../assets/styles';
 
 import {
   Maybe,
-  GithubDataDataRepositoriesNodes,
-  GithubDataDataUserGistsEdgesNode,
+  GithubDataDataUserRepositoriesNodes,
+  GithubDataDataUserGistsNodes,
 } from '../../types/graphql-types';
 
 import Layout from '../organisms/layouts/layout';
@@ -16,8 +16,8 @@ import { GistCard } from '../organisms/home/gist-card';
 type Props = {
   githubUrl?: string;
   gistUrl?: string;
-  repositories?: Maybe<GithubDataDataRepositoriesNodes>[];
-  gists?: Maybe<GithubDataDataUserGistsEdgesNode>[];
+  repositories?: Maybe<GithubDataDataUserRepositoriesNodes>[];
+  gists?: Maybe<GithubDataDataUserGistsNodes>[];
 };
 
 export const Home: FC<Props> = ({

@@ -40,6 +40,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    'arrow-body-style': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': [
       'error',

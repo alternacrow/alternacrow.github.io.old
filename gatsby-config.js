@@ -46,28 +46,16 @@ module.exports = {
       options: {
         token: process.env.GITHUB_API_TOKEN,
         graphQLQuery: `
-        query {
-          repositories: search(type: REPOSITORY, first: 10, query: "user:${siteMetadata.user.github} is:public") {
-            nodes {
-              ... on Repository {
-                id
-                name
-                description
-                url
-                homepageUrl
-              }
-            }
-          }
-          user(login: "${siteMetadata.user.github}") {
-            login
-            bio
-            avatarUrl(size: 32)
-            email
-            twitterUsername
-            url
-            gists(first: 10, privacy: PUBLIC) {
-              edges {
-                node {
+          query {
+            user(login: "${siteMetadata.user.github}") {
+              login
+              bio
+              avatarUrl(size: 32)
+              email
+              twitterUsername
+              url
+              gists(first: 10, orderBy: {field: UPDATED_AT, direction: DESC}, privacy: PUBLIC) {
+                nodes {
                   id
                   url
                   updatedAt
@@ -76,9 +64,18 @@ module.exports = {
                   name
                 }
               }
+              repositories(first: 10, orderBy: {field: UPDATED_AT, direction: DESC}, privacy: PUBLIC) {
+                nodes {
+                  id
+                  name
+                  url
+                  homepageUrl
+                  description
+                }
+              }
             }
           }
-        } `,
+        `,
       },
     },
     'gatsby-plugin-typescript',

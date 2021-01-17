@@ -7,34 +7,28 @@ import { Home } from '../views/templates/home';
 const IndexPage: FC<PageProps> = () => {
   const data: IndexQuery = useStaticQuery(graphql`
     query Index {
-      allGithubData {
-        edges {
-          node {
-            data {
-              user {
-                login
+      githubData {
+        data {
+          user {
+            login
+            url
+            repositories {
+              nodes {
+                id
+                name
+                description
                 url
-                gists {
-                  edges {
-                    node {
-                      id
-                      name
-                      description
-                      url
-                      createdAt
-                      updatedAt
-                    }
-                  }
-                }
+                homepageUrl
               }
-              repositories {
-                nodes {
-                  id
-                  name
-                  description
-                  url
-                  homepageUrl
-                }
+            }
+            gists {
+              nodes {
+                id
+                name
+                description
+                url
+                createdAt
+                updatedAt
               }
             }
           }
@@ -43,22 +37,12 @@ const IndexPage: FC<PageProps> = () => {
     }
   `);
 
-  console.log(data);
-
-  const gists = useMemo(
-    () =>
-      data.allGithubData.edges[0].node.data?.user?.gists?.edges?.map(
-        edge => edge?.node,
-      ) ?? [],
-    [data.allGithubData.edges],
-  );
-
   return (
     <Home
-      githubUrl={data.allGithubData.edges[0].node.data?.user?.url}
-      gistUrl={`https://gist.github.com/${data.allGithubData.edges[0].node.data?.user?.login}`}
-      repositories={data.allGithubData.edges[0].node.data?.repositories?.nodes}
-      gists={gists}
+      githubUrl={data.githubData?.data?.user?.url}
+      gistUrl={`https://gist.github.com/${data.githubData?.data?.user?.login}`}
+      repositories={data.githubData?.data?.user?.repositories?.nodes}
+      gists={data.githubData?.data?.user?.gists?.nodes}
     />
   );
 };

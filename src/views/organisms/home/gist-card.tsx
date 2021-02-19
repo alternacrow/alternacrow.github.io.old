@@ -33,7 +33,7 @@ const Name = styled.dt`
   font-size: 14px;
   color: ${color.secondary};
   a:hover {
-    opacity: 0.8;
+    color: ${color.linkhover};
   }
 `;
 

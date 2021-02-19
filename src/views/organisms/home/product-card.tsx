@@ -24,6 +24,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
 
 const Container = styled.a`
   display: block;
+  padding: 6px;
   &:hover {
     picture {
       opacity: 0.8;

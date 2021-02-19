@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{"12gV":function(e,t,a){"use strict";a.r(t);var n=a("q1tI"),r=a.n(n),c=a("Wbzz"),i=a("g8f1"),l=a("gXpM");t.default=function(){return r.a.createElement(i.a,null,r.a.createElement(l.a,{title:"fairy"}),r.a.createElement("p",null,"工事中…"),r.a.createElement(c.Link,{to:"/fairy/privacypolicy"},"プライバシーポリシー"))}}}]);
+//# sourceMappingURL=component---src-pages-fairy-index-tsx-146fed2d659828319e16.js.map

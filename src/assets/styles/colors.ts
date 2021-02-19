@@ -10,6 +10,7 @@ type ColorType =
   | 'blur'
   // unique
   | 'text'
+  | 'note'
   | 'border'
   | 'shadow'
   | 'link'
@@ -29,6 +30,7 @@ export const color: { [key in ColorType]: string } = {
   blur: 'rgba(0, 0, 0, 0.7)',
   // unique
   text: '#2a2a2a',
+  note: '#646464',
   border: '#cccccc',
   shadow: 'rgba(0, 0, 0, 0.2)',
   link: '#1e7dc0',

@@ -9,16 +9,18 @@ type Props = {
   gist?: GithubDataDataUserGistsEdgesNode;
 };
 
-export const GistCard: FC<Props> = ({ gist = {} }) => (
-  <Container>
-    <Description>
-      <time>{dayjs(gist?.updatedAt).format('YYYY/MM/DD')}</time>
-    </Description>
-    <Name>
-      <a href={gist?.url}>{gist?.description}</a>
-    </Name>
-  </Container>
-);
+export const GistCard: FC<Props> = ({ gist = {} }) => {
+  return (
+    <Container>
+      <Description>
+        <time>{dayjs(gist?.updatedAt).format('YYYY/MM/DD')}</time>
+      </Description>
+      <Name>
+        <a href={gist?.url}>{gist?.description}</a>
+      </Name>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   display: flex;

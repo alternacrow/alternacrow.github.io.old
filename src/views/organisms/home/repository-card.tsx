@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { color } from '../../../assets/styles/colors';
 
-import { FontAwesome } from '../../atoms/icons/fontawesome';
+import { FontAwesome } from '../../atoms/images/fontawesome';
 import { ExternalLink } from '../../atoms/links/external';
 
-import { GithubDataRawResultDataRepositoriesNodes } from '../../../types/graphql-types';
+import { GithubDataDataUserRepositoriesNodes } from '../../../types/graphql-types';
 
 type Props = {
-  repository?: GithubDataRawResultDataRepositoriesNodes;
+  repository?: GithubDataDataUserRepositoriesNodes;
 };
 
 export const RepositoryCard: FC<Props> = ({ repository = {} }) => (

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { media, vw, color } from '../../assets/styles';
+import { products } from '../../constants';
 
 import {
   Maybe,
@@ -10,6 +11,7 @@ import {
 
 import Layout from '../organisms/layouts/layout';
 import SEO from '../organisms/layouts/seo';
+import { ProductCard } from '../organisms/home/product-card';
 import { RepositoryCard } from '../organisms/home/repository-card';
 import { GistCard } from '../organisms/home/gist-card';
 
@@ -29,9 +31,14 @@ export const Home: FC<Props> = ({
   <Layout>
     <SEO title="Home" />
 
-    {/* <Section>
+    <Section>
       <Title>Product</Title>
-    </Section> */}
+      <Products>
+        {products.map(product => (
+          <ProductCard key={`product-${product.name}`} product={product} />
+        ))}
+      </Products>
+    </Section>
 
     <Section>
       <i className="fa fa-git-alt" style={{ fontSize: 14, color: 'red' }} />
@@ -57,8 +64,7 @@ export const Home: FC<Props> = ({
 );
 
 const Section = styled.section`
-  margin: 0 16px;
-  padding: 32px 0;
+  margin: 32px 16px 0;
 
   ${media.sp} {
     margin: 0 ${vw(8)};
@@ -66,7 +72,7 @@ const Section = styled.section`
   }
 
   & + & {
-    margin-top: 32px;
+    margin-top: 64px;
   }
 `;
 
@@ -86,6 +92,10 @@ const ReadMore = styled.a`
   font-size: 14px;
   font-weight: normal;
   color: ${color.white};
+`;
+
+const Products = styled.dl`
+  margin-top: 12px;
 `;
 
 const Repositories = styled.dl`

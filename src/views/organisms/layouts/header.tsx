@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { media, vw, color } from '../../../assets/styles';
 
-import { FontAwesome } from '../../atoms/icons/fontawesome';
+import { FontAwesome } from '../../atoms/images/fontawesome';
 
 import { GithubDataDataUser } from '../../../types/graphql-types';
 

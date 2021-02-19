@@ -6,8 +6,8 @@ import { media } from '../assets/styles';
 import Layout from '../views/organisms/layouts/layout';
 import SEO from '../views/organisms/layouts/seo';
 
-import { HorizontalScrollSample } from '../views/organisms/functions/horizontal-scroll.sample';
-import { ModalSample } from '../views/organisms/functions/modal.sample';
+import { HorizontalScrollSample } from '../views/organisms/modules/horizontal-scroll.sample';
+import { ModalSample } from '../views/organisms/modules/modal.sample';
 
 const GenericsComponentsPage: FC<PageProps> = () => (
   <Layout>

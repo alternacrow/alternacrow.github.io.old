@@ -28,6 +28,11 @@ export const Home: FC<Props> = ({
 }) => (
   <Layout>
     <SEO title="Home" />
+
+    {/* <Section>
+      <Title>Product</Title>
+    </Section> */}
+
     <Section>
       <i className="fa fa-git-alt" style={{ fontSize: 14, color: 'red' }} />
       <Title>Repositories</Title>

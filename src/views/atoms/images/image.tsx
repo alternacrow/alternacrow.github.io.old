@@ -17,7 +17,7 @@ const Image: FC<Props> = ({ className = '', filename }) => (
               relativePath
               name
               childImageSharp {
-                fluid(maxWidth: 512) {
+                fluid(maxWidth: 256) {
                   ...GatsbyImageSharpFluid
                 }
               }
